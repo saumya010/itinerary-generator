@@ -1,28 +1,40 @@
 import React, { useState } from 'react';
 import {fetchCountries} from './api';
+import CountryList from './Components/CountryList';
 
 const App = () => {
 	const [countries, setCountries] = useState([])
 
-	const fetchApi = async () => {
-		const resp = await fetchCountries()
+	// Generate a list of random countries
+	const getRandomCountries = (countryList) => {
 		let result = [], i = 0
 		while( i < 10 ) {
-			const random = Math.floor(Math.random() * resp.length);
-			if(result.indexOf(resp[random]) !== -1){
+			const random = Math.floor(Math.random() * countryList.length);
+			if(result.indexOf(countryList[random]) !== -1){
 				continue;
 			};
-			result.push(resp[random]);
+			result.push(countryList[random]);
 			i++
 		}
-		setCountries(result)
+		return result
+	}
+
+	// Get a list of all countries from the API
+	const fetchApi = async () => {
+		const response = await fetchCountries()
+		setCountries(getRandomCountries(response))
+	}
+
+	const removeCountry = (name) => {
+		const removedList = countries.filter( country => country.name !== name)
+		setCountries(removedList)
 	}
 
 	return (
 		<div>
-			<h1>Travel Itenrary</h1>
-			<p>{countries.length > 0 ? <ol>{countries.map(country => <li key={country.name}>{country.name}</li>)}</ol> : 'Click the button to generate an itenrary.'}</p>
-			<button onClick={fetchApi}>Generate Itenrary</button>
+			<h1>Travel Itinrary</h1>
+			<CountryList countries = {countries} removeCountry={removeCountry} />
+			<button onClick={fetchApi}>Generate Itinrary</button>
 		</div>
 	)
 }
