@@ -1,0 +1,31 @@
+.modal {
+	align-items: center;
+	background-color: rgba(0, 0, 0, 0.5);
+	display: flex;
+	height: 100vh;
+	justify-content: center;
+	left: 0;
+	overflow: hidden;
+	position: absolute;
+	width: 100vw;
+	top: 0;
+	z-index: 11;
+}
+.modalInner {
+	background-color: #fff;
+	padding: 2%;
+	position: relative;
+	text-align: center;
+	width: 30%;
+}
+.heading {
+	font-size: 24px;
+}
+.closeButton {
+	cursor: pointer;
+	font-size: 20px;
+	position: absolute;
+	right: 1%;
+	top: 2%;
+	z-index: 12;
+}

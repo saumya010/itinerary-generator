@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import {fetchCountries} from './api';
-import CountryList from './Components/CountryList';
+import CountryList from './Components/CountryList/CountryList';
+
+import styles from './App.module.css';
 
 const App = () => {
 	const [countries, setCountries] = useState([])
@@ -31,10 +33,12 @@ const App = () => {
 	}
 
 	return (
-		<div>
-			<h1>Travel Itinrary</h1>
-			<CountryList countries = {countries} removeCountry={removeCountry} />
-			<button onClick={fetchApi}>Generate Itinrary</button>
+		<div className={styles.container}>
+			<div className={styles.containerInner}>
+				<h1 className={styles.heading}>Travel Itinrary</h1>
+				<CountryList countries={countries} removeCountry={removeCountry} />
+				<button className={styles.generateButton} onClick={() => fetchApi()}>Generate Itinrary</button>
+			</div>
 		</div>
 	)
 }
