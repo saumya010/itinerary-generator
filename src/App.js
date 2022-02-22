@@ -49,7 +49,7 @@ const App = () => {
 					removeCountry={removeCountry}
 					handleOnDragEnd={handleOnDragEnd}
 				/>
-				<button className={styles.generateButton} onClick={() => fetchApi()}>Generate Itinerary</button>
+				<button className={styles.generateButton} onClick={() => fetchApi()}>Generate Random Itinerary</button>
 			</div>
 		</div>
 	)

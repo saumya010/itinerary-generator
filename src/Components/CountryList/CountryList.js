@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {IoIosCloseCircle} from 'react-icons/io';
+import {IoIosCloseCircle, IoMdMove, IoMdCreate} from 'react-icons/io';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import Modal from '../Modal/Modal';
 import styles from './CountryList.module.css';
@@ -22,14 +22,17 @@ const CountryList = ({countries, removeCountry, handleOnDragEnd}) => {
 								<Draggable key={name} draggableId={name} index={index}>
 									{(provided) => (
 										<li key={name} ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
-											<span
-												onClick={() => {
+											<span>
+												<IoMdMove />
+											</span>
+											<span>{ name }</span>
+											<span>
+												<IoMdCreate onClick={() => {
 													setDetails( {name: name, capital: capital} );
 													setModal(true)
-												}}>
-												{ name }
+												}} />
+												<IoIosCloseCircle className={styles.closeButton} onClick={() => removeCountry(name)} />
 											</span>
-											<IoIosCloseCircle className={styles.closeButton} onClick={() => removeCountry(name)} />
 										</li>
 									)}
 								</Draggable>

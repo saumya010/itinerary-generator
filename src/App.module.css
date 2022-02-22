@@ -1,12 +1,23 @@
 body {
-	background: linear-gradient(45deg, rgb(0, 255, 208), rgb(71, 105, 255));
+	background-image: url(./images/background.jpg);
 	background-repeat: no-repeat;
 	background-size: cover;
 	font-family: 'Lato', sans-serif;
 	font-size: 16px;
 	margin: 0;
 	padding: 0;
+	position: relative;
 	overflow-x: hidden;
+}
+body:before {
+	background-color: rgb(0, 0, 0, 0.6);
+	bottom: 0;
+	content: '';
+	left: 0;
+	position: absolute;
+	right: 0;
+	top: 0;
+	z-index: -1;
 }
 
 .container {
@@ -19,7 +30,8 @@ body {
 }
 .containerInner {
 	background-color: #fff;
-	box-shadow: 0 0 10px #eee;
+	border-radius: 5px;
+	box-shadow: 0 0 15px #666;
 	padding: 2%;
 	width: 25%;
 }
@@ -27,20 +39,21 @@ body {
 	text-align: center;
 }
 .generateButton {
-	background-color: #fff;
-	border: 2px solid #B5ACE5;
-	color: #B5ACE5;
+	background-color: #4ba9fb;
+	border: 2px solid #4ba9fb;
+	border-radius: 5px;
+	color: #fff;
 	display: flex;
-	font-size: 20px;
 	cursor: pointer;
 	margin: 10px auto;
 	outline: none;
 	padding: 10px 20px;
+	text-transform: uppercase;
 	transition: all 0.3s ease;
 }
 .generateButton:hover {
-	background-color: #B5ACE5;
-	color: #fff;
+	background-color: #fff;
+	color: #4ba9fb;
 	transition: all 0.3s ease;
 }
 
@@ -49,4 +62,7 @@ body {
     .container {
         margin: 5%;
     }
+	.containerInner {
+		width: 80%;
+	}
 }
