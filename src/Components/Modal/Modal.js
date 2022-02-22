@@ -12,7 +12,6 @@ const CountryDetails = ({ details, modal, setModal, countries }) => {
 	const handleSubmit = (e) => {
 		e.preventDefault()
 		console.log(notes)
-		//addNotes('')
 	}
 
 	const showNext = () => {
@@ -32,9 +31,9 @@ const CountryDetails = ({ details, modal, setModal, countries }) => {
 				<div className={styles.modalInner}>
 					<h3 className={styles.heading}>{details.name}</h3>
 					<p>{`Capital city is: ${details.capital}`}</p>
-					<p>Add notes for this country:</p>
 					{ (notes.length > 0) ? notes : '' }
-					<form onSubmit={handleSubmit}>
+					<form onSubmit={handleSubmit} className={styles.notesForm}>
+						<p>Add notes for this country:</p>
 						<input
 							type="text"
 							name="notes"
@@ -45,8 +44,10 @@ const CountryDetails = ({ details, modal, setModal, countries }) => {
 						<button onClick={handleSubmit}>Add Notes</button>
 					</form>
 					<IoIosCloseCircle className={styles.closeButton} onClick={() => closeModal()} />
-					<IoIosArrowDropleftCircle onClick={showPrevious} />
-					<IoIosArrowDroprightCircle onClick={showNext} />
+					<div className={styles.navigation}>
+						<IoIosArrowDropleftCircle onClick={showPrevious} />
+						<IoIosArrowDroprightCircle onClick={showNext} />
+					</div>
 				</div>
 			</div>
 		)

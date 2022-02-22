@@ -13,14 +13,30 @@
 }
 .modalInner {
 	background-color: #fff;
-	padding: 2%;
+	padding: 4% 2%;
 	position: relative;
 	text-align: center;
 	width: 30%;
 }
 .heading {
 	font-size: 24px;
+	margin-top: 0;
 }
+
+.notesForm {
+	margin-top: 50px;
+}
+.notesForm input {
+	border: 1px solid #333;
+	padding: 10px;
+}
+.notesForm button {
+	background-color: #fff;
+	border: 1px solid #333;
+	cursor: pointer;
+	padding: 10px 20px;
+}
+
 .closeButton {
 	cursor: pointer;
 	font-size: 20px;
@@ -28,4 +44,8 @@
 	right: 1%;
 	top: 2%;
 	z-index: 12;
+}
+.navigation {
+	font-size: 32px;
+	margin-top: 20px;
 }

@@ -42,7 +42,7 @@ const CountryList = ({countries, removeCountry, handleOnDragEnd}) => {
 			</DragDropContext>
 		)
 	}
-	return <p>Click the button to generate an itenrary.</p>
+	return <p className={styles.centerText}>Click the button to generate an itenrary.</p>
 }
 
 export default CountryList;
