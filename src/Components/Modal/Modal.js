@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import {IoIosCloseCircle, IoIosArrowDroprightCircle, IoIosArrowDropleftCircle} from 'react-icons/io';
 import styles from './Modal.module.css';
+import Notes from '../Notes/Notes';
 
-const CountryDetails = ({ details, modal, setModal, showNext, showPrevious, addNotes, notes }) => {
+const CountryDetails = ({ details, setDetails, modal, setModal, showNext, showPrevious, disablePrev, disableNext }) => {
 	const [input, updateInput] = useState('')
 
 	const handleChange = (e) => {
@@ -12,21 +13,12 @@ const CountryDetails = ({ details, modal, setModal, showNext, showPrevious, addN
 
 	const handleSubmit = (e) => {
 		e.preventDefault()
-		addNotes([...notes, input])
+		setDetails( {...details, notes: input} )
 		updateInput('')
 	}
 
 	const closeModal = () => {
 		setModal(false)
-	}
-
-	const displayNotes = (notes) => {
-		if(notes.length > 0) {
-			console.log(notes)
-			notes.map( (note, index) => <li key={index}>{note}</li> )
-		} else {
-			return ''
-		}
 	}
 
 	if(modal) {
@@ -47,11 +39,17 @@ const CountryDetails = ({ details, modal, setModal, showNext, showPrevious, addN
 						/>
 						<button onClick={handleSubmit}>Add Notes</button>
 					</form>
-					{ notes.map( note => <li key={note}> {note} </li>) }
+					<Notes
+						notes={details.notes}
+					/>
 					<IoIosCloseCircle title="Close" className={styles.closeButton} onClick={() => closeModal()} />
 					<div className={styles.navigation}>
-						<span title="Show previous country" onClick={showPrevious}><IoIosArrowDropleftCircle /> Previous</span>
-						<span title="Show next country" onClick={showNext}>Next <IoIosArrowDroprightCircle /></span>
+						<span className={disablePrev ? styles.disabled : ''} title="Show previous country" onClick={showPrevious}>
+							<IoIosArrowDropleftCircle /> Previous
+						</span>
+						<span className={disableNext ? styles.disabled : ''} title="Show next country" onClick={showNext}>
+							Next <IoIosArrowDroprightCircle />
+						</span>
 					</div>
 				</div>
 			</div>

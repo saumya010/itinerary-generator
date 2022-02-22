@@ -18,7 +18,7 @@ const DraggableCountryList = ({countries, removeCountry, setDetails, setModal, n
 									<span>{ name }</span>
 									<span>
 										<IoMdCreate onClick={() => {
-											setDetails( {name: name, capital: capital, index: index, notes: notes} );
+											setDetails( {name: name, capital: capital, index: index, notes: []} );
 											setModal(true)
 										}} />
 										<IoIosCloseCircle className={styles.closeButton} onClick={() => removeCountry(name)} />

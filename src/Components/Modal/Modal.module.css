@@ -67,3 +67,7 @@
 .navigation svg {
 	padding: 0 5px;
 }
+.navigation .disabled {
+	background-color: #eee;
+	cursor: not-allowed;
+}
