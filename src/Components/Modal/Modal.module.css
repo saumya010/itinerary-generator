@@ -46,6 +46,24 @@
 	z-index: 12;
 }
 .navigation {
-	font-size: 32px;
+	align-items: center;
+	display: flex;
+	font-size: 20px;
+	justify-content: space-between;
 	margin-top: 20px;
+}
+.navigation span {
+	align-items: center;
+	background-color: #ddd;
+	border-radius: 50px;
+	cursor: pointer;
+	display: flex;
+	justify-content: center;
+	padding: 10px 30px;
+}
+.navigation span:hover {
+	background-color: #aaa;
+}
+.navigation svg {
+	padding: 0 5px;
 }

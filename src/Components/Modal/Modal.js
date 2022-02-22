@@ -2,24 +2,35 @@ import React, { useState } from 'react';
 import {IoIosCloseCircle, IoIosArrowDroprightCircle, IoIosArrowDropleftCircle} from 'react-icons/io';
 import styles from './Modal.module.css';
 
-const CountryDetails = ({ details, modal, setModal, showNext, showPrevious }) => {
-	const [notes, addNotes] = useState('')
+const CountryDetails = ({ details, modal, setModal, showNext, showPrevious, addNotes, notes }) => {
+	const [input, updateInput] = useState('')
 
 	const handleChange = (e) => {
-		console.log(e.target.value)
-		addNotes(e.target.value)
+		if(e.target.value.length > 0)
+		updateInput(e.target.value)
 	}
 
 	const handleSubmit = (e) => {
 		e.preventDefault()
-		console.log(notes)
+		addNotes([...notes, input])
+		updateInput('')
 	}
 
 	const closeModal = () => {
 		setModal(false)
 	}
 
+	const displayNotes = (notes) => {
+		if(notes.length > 0) {
+			console.log(notes)
+			notes.map( (note, index) => <li key={index}>{note}</li> )
+		} else {
+			return ''
+		}
+	}
+
 	if(modal) {
+		console.log(details)
 		return(
 			<div className={styles.modal}>
 				<div className={styles.modalInner}>
@@ -32,15 +43,15 @@ const CountryDetails = ({ details, modal, setModal, showNext, showPrevious }) =>
 							name="notes"
 							id="notes"
 							onChange={handleChange}
-							value={notes}
+							value={input}
 						/>
 						<button onClick={handleSubmit}>Add Notes</button>
 					</form>
-					{ (notes.length > 0) ? notes : '' }
-					<IoIosCloseCircle className={styles.closeButton} onClick={() => closeModal()} />
+					{ notes.map( note => <li key={note}> {note} </li>) }
+					<IoIosCloseCircle title="Close" className={styles.closeButton} onClick={() => closeModal()} />
 					<div className={styles.navigation}>
-						<IoIosArrowDropleftCircle onClick={showPrevious} />
-						<IoIosArrowDroprightCircle onClick={showNext} />
+						<span title="Show previous country" onClick={showPrevious}><IoIosArrowDropleftCircle /> Previous</span>
+						<span title="Show next country" onClick={showNext}>Next <IoIosArrowDroprightCircle /></span>
 					</div>
 				</div>
 			</div>

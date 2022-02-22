@@ -1,12 +1,18 @@
 import React, { useState } from 'react';
 import {fetchCountries} from './api';
-import CountryList from './Components/CountryList/CountryList';
+import Itinerary from './Components/Itinerary/Itinerary';
 import styles from './App.module.css';
 
 const App = () => {
 	const [countries, setCountries] = useState([])
 
-	// Generate a list of random countries
+	// Get a list of all countries from the API
+	const fetchApi = async () => {
+		const response = await fetchCountries()
+		setCountries(getRandomCountries(response))
+	}
+
+	// Generate a list of 10 random countries
 	const getRandomCountries = (countryList) => {
 		let result = [], i = 0
 		while( i < 10 ) {
@@ -20,21 +26,16 @@ const App = () => {
 		return result
 	}
 
-	// Get a list of all countries from the API
-	const fetchApi = async () => {
-		const response = await fetchCountries()
-		setCountries(getRandomCountries(response))
-	}
-
+	// Function to handle the drag event
 	const handleOnDragEnd = (result) => {
 		if (!result.destination) return;
 		const items = Array.from(countries);
 		const [reorderedItem] = items.splice(result.source.index, 1);
 		items.splice(result.destination.index, 0, reorderedItem);
-		console.log(items)
 		setCountries(items)
 	}
 
+	// Function to remove the country from the itinerary
 	const removeCountry = (name) => {
 		const removedList = countries.filter( country => country.name !== name)
 		setCountries(removedList)
@@ -44,7 +45,7 @@ const App = () => {
 		<div className={styles.container}>
 			<div className={styles.containerInner}>
 				<h1 className={styles.heading}>Travel Itinerary</h1>
-				<CountryList
+				<Itinerary
 					countries={countries}
 					removeCountry={removeCountry}
 					handleOnDragEnd={handleOnDragEnd}
