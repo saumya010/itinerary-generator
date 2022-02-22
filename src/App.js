@@ -5,7 +5,6 @@ import styles from './App.module.css';
 
 const App = () => {
 	const [countries, setCountries] = useState([])
-	const [listOrder, updateListOrder] = useState(countries)
 
 	// Generate a list of random countries
 	const getRandomCountries = (countryList) => {
