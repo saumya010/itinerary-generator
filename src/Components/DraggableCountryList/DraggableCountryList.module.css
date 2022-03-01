@@ -1,15 +1,18 @@
 .countryList {
+	max-height: 100vh;
 	padding: 0;
+	overflow-y: auto;
 }
 .countryList li {
 	align-items: center;
 	background-color: #f5f5f5;
 	border-radius: 3px;
+	box-shadow: 5px 5px 1px #fb9d4b;
 	display: flex;
 	font-size: 18px;
 	justify-content: space-between;
 	list-style: none;
-	margin: 10px;
+	margin: 15px;
 	padding: 10px;
 	transition: all 0.3s ease;
 }
