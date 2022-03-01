@@ -1,6 +1,6 @@
 .modal {
 	align-items: center;
-	background-color: rgba(0, 0, 0, 0.5);
+	background-color: rgba(0, 0, 0, 0.75);
 	display: flex;
 	height: 100vh;
 	justify-content: center;
@@ -13,7 +13,7 @@
 }
 .modalInner {
 	background-color: #fff;
-	padding: 4% 2%;
+	padding: 2%;
 	position: relative;
 	text-align: center;
 	width: 30%;
@@ -24,17 +24,39 @@
 }
 
 .notesForm {
-	margin-top: 50px;
+	margin-bottom: 30px;
+	margin-top: 30px;
 }
 .notesForm input {
-	border: 1px solid #333;
+	border: 1px solid #77dd77;
+	border-bottom-left-radius: 5px;
+	border-top-left-radius: 5px;
+	box-sizing: border-box;
 	padding: 10px;
+	width: 75%;
+}
+.notesForm input:focus {
+	outline: none;
 }
 .notesForm button {
 	background-color: #fff;
 	border: 1px solid #333;
 	cursor: pointer;
 	padding: 10px 20px;
+}
+.addNotes {
+	background-color: #77dd77;
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+	color: #fff;
+	cursor: pointer;
+	padding: 11px;
+	transition: all 0.3s ease;
+	vertical-align: bottom;
+}
+.addNotes:hover {
+	background-color: #3ace3a;
+	transition: all 0.3s ease;
 }
 
 .closeButton {
@@ -50,24 +72,30 @@
 	display: flex;
 	font-size: 20px;
 	justify-content: space-between;
-	margin-top: 20px;
+	margin-top: 50px;
 }
 .navigation span {
 	align-items: center;
-	background-color: #ddd;
+	background-color: #7777dd;
 	border-radius: 50px;
+	color: #fff;
 	cursor: pointer;
 	display: flex;
 	justify-content: center;
 	padding: 10px 30px;
+	transition: all 0.3s ease;
 }
 .navigation span:hover {
-	background-color: #aaa;
+	background-color: #5d5df7;
 }
 .navigation svg {
 	padding: 0 5px;
 }
 .navigation .disabled {
-	background-color: #eee;
+	background-color: #a6a6e9;
+	cursor: not-allowed;
+}
+.navigation .disabled:hover {
+	background-color: #a6a6e9;
 	cursor: not-allowed;
 }

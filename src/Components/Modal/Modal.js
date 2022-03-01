@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import {IoIosCloseCircle, IoIosArrowDroprightCircle, IoIosArrowDropleftCircle} from 'react-icons/io';
+import {IoIosCloseCircle, IoIosArrowDroprightCircle, IoIosArrowDropleftCircle, IoMdAdd} from 'react-icons/io';
 import styles from './Modal.module.css';
 import Notes from '../Notes/Notes';
 
@@ -13,8 +13,10 @@ const CountryDetails = ({ details, setDetails, modal, setModal, showNext, showPr
 
 	const handleSubmit = (e) => {
 		e.preventDefault()
-		setDetails( {...details, notes: input} )
-		updateInput('')
+		if(input.length > 0) {
+			setDetails( {...details, notes: (details?.notes?.length > 0) ? [...details.notes, input] : [input]} )
+			updateInput('')
+		}
 	}
 
 	const closeModal = () => {
@@ -22,7 +24,6 @@ const CountryDetails = ({ details, setDetails, modal, setModal, showNext, showPr
 	}
 
 	if(modal) {
-		console.log(details)
 		return(
 			<div className={styles.modal}>
 				<div className={styles.modalInner}>
@@ -37,7 +38,7 @@ const CountryDetails = ({ details, setDetails, modal, setModal, showNext, showPr
 							onChange={handleChange}
 							value={input}
 						/>
-						<button onClick={handleSubmit}>Add Notes</button>
+						<IoMdAdd className={styles.addNotes} onClick={handleSubmit} />
 					</form>
 					<Notes
 						notes={details.notes}
